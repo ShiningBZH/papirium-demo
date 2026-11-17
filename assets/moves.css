@@ -1,0 +1,52 @@
+/* Page "Moves" : la liste des coups de Papi, dans le style du site (fond nuit, rose, bleu ciel). */
+:root { --blue: #60ccff; --card: #17192e; --card2: #100d1c; --line: #ffffff1c; --gold: #f4c531; --green: #5cc24f; }
+
+.moves-page { max-width: 1160px; margin: auto; padding: 8px 5% 40px; }
+.moves-head { text-align: center; max-width: 820px; margin: 0 auto 8px; }
+.moves-head h1 { margin: 14px 0; }
+
+.pad { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; margin-top: 22px; color: var(--muted); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+.pad span { margin-right: 10px; }
+
+.group { margin-top: 52px; }
+.group h2, .rage h2 { font-size: clamp(22px, 3vw, 30px); letter-spacing: -.5px; margin: 0 0 16px; }
+.group h2::before { content: ""; display: inline-block; width: 10px; height: 10px; background: var(--pink); margin-right: 12px; vertical-align: 4px; transform: rotate(45deg); }
+.lead { color: var(--muted); line-height: 1.7; max-width: 70ch; margin: -6px 0 18px; }
+
+.grid { display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: 14px; }
+.move { display: flex; flex-direction: column; border: 1px solid var(--line); border-top-color: #649dff65; border-radius: 8px; background: linear-gradient(155deg, var(--card), var(--card2)); overflow: hidden; }
+.move.wide { flex-direction: row; }
+.stage { display: flex; align-items: flex-end; justify-content: center; min-height: 210px; padding: 16px 12px 0; background: linear-gradient(to bottom, transparent 82%, #ffffff0d 82%); border-bottom: 1px solid var(--line); }
+.move.wide .stage { flex: 0 0 250px; border-bottom: 0; border-right: 1px solid var(--line); }
+.stage img { image-rendering: pixelated; image-rendering: crisp-edges; max-width: 100%; height: auto; }
+.info { padding: 16px 18px 20px; min-width: 0; flex: 1; }
+.info h3 { margin: 0 0 10px; font-size: 17px; letter-spacing: .3px; color: var(--blue); }
+.info p { margin: 0; color: #dcd8e8; line-height: 1.6; font-size: 14px; }
+
+.input { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0 0 12px; }
+kbd { display: inline-grid; place-items: center; color: white; font-family: Arial, Helvetica, sans-serif; font-weight: 800; font-size: 13px; }
+kbd.btn { width: 30px; height: 30px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #4b4d61, #14131f 70%); border: 2px solid #5f6078; box-shadow: 0 2px 0 #000; }
+kbd.dir { width: 30px; height: 30px; border-radius: 5px; background: #23243b; border: 2px solid #4a4c6a; box-shadow: 0 2px 0 #000; font-size: 16px; }
+kbd.start { height: 24px; padding: 0 10px; border-radius: 12px; background: #23243b; border: 2px solid #4a4c6a; font-size: 10px; letter-spacing: 1px; }
+.j { color: var(--muted); font-size: 12px; letter-spacing: .5px; }
+
+.list { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 10px; }
+.list li { display: grid; grid-template-columns: minmax(0, 230px) minmax(0, 1fr); gap: 12px; align-items: center; border-top: 1px solid var(--line); padding-top: 10px; font-size: 14px; color: #dcd8e8; }
+.list li .input { margin: 0; }
+
+.rage { margin-top: 60px; display: grid; grid-template-columns: auto 1fr; gap: 30px; align-items: center; border: 1px solid #ff087b80; border-radius: 8px; padding: 26px 30px; background: radial-gradient(ellipse at 14% 60%, #f4c53126, transparent 60%), linear-gradient(155deg, var(--card), var(--card2)); }
+.rage h2 { color: var(--gold); }
+.rage p { margin: 0 0 12px; max-width: 64ch; line-height: 1.7; color: #dcd8e8; }
+.rage .input { display: inline-flex; margin: 0 4px; vertical-align: middle; }
+.rage .tip { border-top: 1px solid var(--line); padding-top: 12px; margin: 0; }
+.rage-img img { image-rendering: pixelated; max-width: 100%; height: auto; }
+.duo { text-align: center; color: var(--muted); font-size: 12px; letter-spacing: 1px; margin: 34px 0 0; }
+
+@media (max-width: 960px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 680px) {
+  .grid { grid-template-columns: 1fr; }
+  .move.wide { flex-direction: column; }
+  .move.wide .stage { flex: none; border-right: 0; border-bottom: 1px solid var(--line); }
+  .list li { grid-template-columns: 1fr; gap: 4px; }
+  .rage { grid-template-columns: 1fr; justify-items: center; padding: 20px; }
+}
